@@ -2,16 +2,16 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// To simulate __dirname in ES Modules
+// 👇 Get __dirname manually
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3000;
 
-// Serve static files from the "pages" folder
+// Static folders
 app.use('/assets', express.static('assets'));
-
+app.use('/pages', express.static('pages'));
 
 // Routes
 app.get('/', (req, res) => {
@@ -23,5 +23,5 @@ app.get('/profile', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`✅ Server is running at http://localhost:${PORT}`);
+  console.log(`✅ Server running at http://localhost:${PORT}`);
 });
